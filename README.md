@@ -891,14 +891,18 @@ await suki.sendMessage(
             description: 'Hello', 
             cover: Buffer, // Image buffer
             stickers: [{
-                data: { url: 'https://example.com/1234kjd.webp' }, 
+                sticker: { url: 'https://example.com/1234kjd.webp' }, 
                 emojis: ['❤'], // optional
-                accessibilityLabel: '' // optional
+                accessibilityLabel: '', // optional
+                isLottie: Boolean, // optional
+                isAnimated: Boolean // optional
             }, 
             {
-                data: Buffer, 
+                sticker: Buffer, 
                 emojis: ['❤'], // optional
-                accessibilityLabel: '' // optional
+                accessibilityLabel: '', // optional
+                isLottie: Boolean, // optional
+                isAnimated: Boolean // optional
             }]
         }
     }
@@ -1074,7 +1078,7 @@ await suki.sendMessage(
             ]
         }], 
         businessOwnerJid: '628xxx@s.whatsapp.net', 
-        thumbnail: 'https//example.com/jdbenkksjs.jpg' // or buffer
+        thumbnail: 'https://example.com/jdbenkksjs.jpg' // or buffer
     }
 )
 ```
@@ -1090,7 +1094,7 @@ await suki.sendMessage(
         footer: 'Footer Message',
         cards: [
            {
-              image: { url: 'https//example.com/jdbenkksjs.jpg' }, // or buffer
+              image: { url: 'https://example.com/jdbenkksjs.jpg' }, // or buffer
               title: 'Title Cards',
               body: 'Body Cards',
               footer: 'Footer Cards',
@@ -1112,7 +1116,7 @@ await suki.sendMessage(
               ]
            },
            {
-              video: { url: 'https//example.com/jdbenkksjs.mp4' }, // or buffer
+              video: { url: 'https://example.com/jdbenkksjs.mp4' }, // or buffer
               title: 'Title Cards',
               body: 'Body Cards',
               footer: 'Footer Cards',
@@ -1328,7 +1332,7 @@ await suki.sendMessage(
     jid, 
     {
        image: { 
-          url: 'https//example.com/jdbenkksjs.jpg' 
+          url: 'https://example.com/jdbenkksjs.jpg' 
        },
        caption: 'Body',
        title: 'Title',
@@ -1352,7 +1356,7 @@ await suki.sendMessage(
     jid, 
     {
         video: { 
-          url: 'https//example.com/jdbenkksjs.mp4' 
+          url: 'https://example.com/jdbenkksjs.mp4' 
        },
        caption: 'Body',
        title: 'Title', 
@@ -1376,10 +1380,10 @@ await suki.sendMessage(
     jid, 
     {
         document: { 
-          url: 'https//example.com/jdbenkksjs.jpg' 
+          url: 'https://example.com/jdbenkksjs.jpg' 
        }, 
        mimetype: 'image/jpeg', 
-       jpegThumbnail: await suki.resize('https//example.com/jdbenkksjs.jpg', 320, 320), 
+       jpegThumbnail: await suki.resize('https://example.com/jdbenkksjs.jpg', 320, 320), 
        caption: 'Body',
        title: 'Title',
        subtitle: 'Subtitle', 
@@ -1429,7 +1433,7 @@ await suki.sendMessage(
     {
         product: {
             productImage: { 
-               url: 'https//example.com/jdbenkksjs.jpg'
+               url: 'https://example.com/jdbenkksjs.jpg'
             },
             productId: '836xxx',
             title: 'Title',
@@ -1590,7 +1594,7 @@ await suki.sendAlbumMessage(
     jid,
     [
        {
-          image: { url: 'https//example.com/jdbenkksjs.jpg' }, 
+          image: { url: 'https://example.com/jdbenkksjs.jpg' }, 
           caption: 'Hello World'
        },
        {
@@ -1598,7 +1602,7 @@ await suki.sendAlbumMessage(
           caption: 'Hello World'
        },
        {
-           video: { url: 'https//example.com/jdbenkksjs.mp4' }, 
+           video: { url: 'https://example.com/jdbenkksjs.mp4' }, 
            caption: 'Hello World'
        }, 
        {
@@ -1634,7 +1638,7 @@ await suki.sendMessage(
     jid, 
     { 
        image: {
-          url: 'https//example.com/jdbenkksjs.jpg'
+          url: 'https://example.com/jdbenkksjs.jpg'
        },    
        caption: 'Body',
        title: 'Title', 
@@ -1654,7 +1658,7 @@ await suki.sendMessage(
     jid, 
     { 
        video: {
-          url: 'https//example.com/jdbenkksjs.jpg'
+          url: 'https://example.com/jdbenkksjs.jpg'
        },    
        caption: 'Body',
        title: 'Title', 
@@ -1674,10 +1678,10 @@ await suki.sendMessage(
     jid, 
     {
         document: { 
-          url: 'https//example.com/jdbenkksjs.jpg' 
+          url: 'https://example.com/jdbenkksjs.jpg' 
        }, 
        mimetype: 'image/jpeg', 
-       jpegThumbnail: await suki.resize('https//example.com/jdbenkksjs.jpg', 320, 320), 
+       jpegThumbnail: await suki.resize('https://example.com/jdbenkksjs.jpg', 320, 320), 
        caption: 'Body',
        title: 'Title',
        subtitle: 'Subtitle', 
@@ -1719,7 +1723,7 @@ await suki.sendMessage(
     {
         product: {
             productImage: { 
-               url: 'https//example.com/jdbenkksjs.jpg'
+               url: 'https://example.com/jdbenkksjs.jpg'
             },
             productId: '836xxx',
             title: 'Title',
@@ -1767,7 +1771,7 @@ await suki.sendMessage(
     jid, 
     { 
        image: {
-          url: 'https//example.com/jdbenkksjs.jpg'
+          url: 'https://example.com/jdbenkksjs.jpg'
        },    
        caption: 'Body',
        title: 'Title', 
@@ -1788,7 +1792,7 @@ await suki.sendMessage(
     jid, 
     { 
        video: {
-          url: 'https//example.com/jdbenkksjs.jpg'
+          url: 'https://example.com/jdbenkksjs.jpg'
        },    
        caption: 'Body',
        title: 'Title', 
@@ -1809,10 +1813,10 @@ await suki.sendMessage(
     jid, 
     {
         document: { 
-          url: 'https//example.com/jdbenkksjs.jpg' 
+          url: 'https://example.com/jdbenkksjs.jpg' 
        }, 
        mimetype: 'image/jpeg', 
-       jpegThumbnail: await suki.resize('https//example.com/jdbenkksjs.jpg', 320, 320), 
+       jpegThumbnail: await suki.resize('https://example.com/jdbenkksjs.jpg', 320, 320), 
        caption: 'Body',
        title: 'Title',
        subtitle: 'Subtitle', 
@@ -1856,7 +1860,7 @@ await suki.sendMessage(
     {
         product: {
             productImage: { 
-               url: 'https//example.com/jdbenkksjs.jpg'
+               url: 'https://example.com/jdbenkksjs.jpg'
             },
             productId: '836xxx',
             title: 'Title',
