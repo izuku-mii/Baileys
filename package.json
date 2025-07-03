@@ -54,6 +54,7 @@
     "axios": "^1.6.0",
     "audio-decode": "^2.2.2", 
     "cache-manager": "^5.7.6", 
+    "fflate": "^0.8.2", 
     "lodash": "^4.17.21",
     "link-preview-js": "^3.0.14", 
     "music-metadata": "^7.12.3",
