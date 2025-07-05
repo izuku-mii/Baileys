@@ -112,12 +112,8 @@ type ViewOnce = {
     viewOnce?: boolean
 }
 
-type ViewOnceV2 = {
-    viewOnceV2?: boolean
-}
-
-type ViewOnceV2Ext = {
-    viewOnceV2Ext?: boolean
+type ViewOnceExt = {
+    viewOnceExt?: boolean
 }
 
 type Buttonable = {
@@ -345,7 +341,7 @@ export type AnyRegularMessageContent = (({
     footer?: string
 } | {
     stickerPack: StickerPack
-} | SharePhoneNumber | RequestPhoneNumber) & ViewOnce & ViewOnceV2 & ViewOnceV2Ext
+} | SharePhoneNumber | RequestPhoneNumber) & ViewOnce & ViewOnceExt
 
 export type AnyMessageContent = AnyRegularMessageContent | {
     forward: WAMessage
