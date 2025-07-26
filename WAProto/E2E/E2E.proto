@@ -300,6 +300,13 @@ message MessageAssociation {
     }
 }
 
+message BotUnifiedResponseMutation {
+    optional SideBySideMetadata sbsMetadata = 1;
+    message SideBySideMetadata {
+        optional string primaryResponseId = 1;
+    }
+}
+
 message BotMetadata {
     optional BotAvatarMetadata avatarMetadata = 1;
     optional string personaId = 2;
@@ -328,6 +335,19 @@ message BotMetadata {
     optional string conversationStarterPromptId = 25;
     optional string botResponseId = 26;
     optional BotSignatureVerificationMetadata verificationMetadata = 27;
+    optional BotUnifiedResponseMutation unifiedResponseMutation = 28;
+    optional BotMessageOriginMetadata botMessageOriginMetadata = 29;
+}
+
+message BotMessageOrigin {
+    optional BotMessageOriginType type = 1;
+    enum BotMessageOriginType {
+        BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED = 0;
+    }
+}
+
+message BotMessageOriginMetadata {
+    repeated BotMessageOrigin origins = 1;
 }
 
 message BotSourcesMetadata {
@@ -345,6 +365,7 @@ message BotSourcesMetadata {
             BING = 1;
             GOOGLE = 2;
             SUPPORT = 3;
+            OTHER = 4;
         }
     }
 }
@@ -842,6 +863,9 @@ message ContextInfo {
     optional StatusSourceType statusSourceType = 64;
     repeated StatusAttributions.StatusAttribution statusAttributions = 65;
     optional bool isGroupStatus = 66;
+    optional ForwardOrigin forwardOrigin = 67;
+    optional QuestionReplyQuotedMessage questionReplyQuotedMessage = 68;
+    optional StatusAudienceMetadata statusAudienceMetadata = 69;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -860,6 +884,11 @@ message ContextInfo {
         optional bool showMmDisclosure = 1;
         optional string encryptedSignalTokenConsented = 2;
         repeated Parameters parameters = 3;
+        optional int32 dataSharingFlags = 4;
+        enum DataSharingFlags {
+            SHOW_MM_DISCLOSURE_ON_CLICK = 1;
+            SHOW_MM_DISCLOSURE_ON_READ = 2;
+        }
         message Parameters {
             optional string key = 1;
             optional string stringData = 2;
@@ -894,6 +923,7 @@ message ContextInfo {
         optional string automatedGreetingMessageCtaType = 23;
         optional bool wtwaAdFormat = 24;
         optional AdType adType = 25;
+        optional string wtwaWebsiteUrl = 26;
         enum AdType {
             CTWA = 0;
             CAWC = 1;
@@ -909,6 +939,12 @@ message ContextInfo {
         optional bool cannotBeRanked = 2;
         optional bool canRequestFeedback = 3;
         optional bool canBeReshared = 4;
+    }
+    enum ForwardOrigin {
+        UNKNOWN = 0;
+        CHAT = 1;
+        STATUS = 2;
+        CHANNELS = 3;
     }
     message ForwardedAIBotMessageInfo {
         optional string botName = 1;
@@ -936,11 +972,24 @@ message ContextInfo {
         MOTION_PHOTO_PARENT = 5;
         MOTION_PHOTO_CHILD = 6;
     }
+    message QuestionReplyQuotedMessage {
+        optional int32 serverQuestionId = 1;
+        optional Message quotedQuestion = 2;
+        optional Message quotedResponse = 3;
+    }
     enum StatusAttributionType {
         NONE = 0;
         RESHARED_FROM_MENTION = 1;
         RESHARED_FROM_POST = 2;
-        FORWARDED_FROM_STATUS = 3;
+        RESHARED_FROM_POST_MANY_TIMES = 3;
+        FORWARDED_FROM_STATUS = 4;
+    }
+    message StatusAudienceMetadata {
+        optional AudienceType audienceType = 1;
+        enum AudienceType {
+            UNKNOWN = 0;
+            CLOSE_FRIENDS = 1;
+        }
     }
     enum StatusSourceType {
         IMAGE = 0;
@@ -1046,6 +1095,7 @@ message Message {
     optional FutureProofMessage groupStatusMessageV2 = 103;
     optional FutureProofMessage botForwardedMessage = 104;
     optional StatusQuestionAnswerMessage statusQuestionAnswerMessage = 105;
+    optional QuestionResponseMessage questionResponseMessage = 107;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -1095,6 +1145,7 @@ message Message {
         optional fixed32 backgroundArgb = 20;
         optional bool viewOnce = 21;
         optional string accessibilityLabel = 22;
+        optional Message.MediaKeyDomain mediaKeyDomain = 23;
     }
     message BCallMessage {
         optional string sessionId = 1;
@@ -1252,6 +1303,7 @@ message Message {
         optional string consumerLid = 3;
         optional string consumerPhoneNumber = 4;
         optional CloudAPIThreadControlNotificationContent notificationContent = 5;
+        optional bool shouldSuppressNotification = 6;
         enum CloudAPIThreadControl {
             UNKNOWN = 0;
             CONTROL_PASSED = 1;
@@ -1306,6 +1358,7 @@ message Message {
         optional uint32 thumbnailWidth = 19;
         optional string caption = 20;
         optional string accessibilityLabel = 21;
+        optional Message.MediaKeyDomain mediaKeyDomain = 22;
     }
     message EncCommentMessage {
         optional Protocol.MessageKey targetMessageKey = 1;
@@ -1529,6 +1582,7 @@ message Message {
         repeated InteractiveAnnotation annotations = 30;
         optional ImageSourceType imageSourceType = 31;
         optional string accessibilityLabel = 32;
+        optional Message.MediaKeyDomain mediaKeyDomain = 33;
         enum ImageSourceType {
             USER_IMAGE = 0;
             AI_GENERATED = 1;
@@ -1744,6 +1798,14 @@ message Message {
         optional int64 mediaKeyTimestamp = 5;
         optional uint32 thumbnailHeight = 6;
         optional uint32 thumbnailWidth = 7;
+        optional Message.MediaKeyDomain mediaKeyDomain = 8;
+    }
+    enum MediaKeyDomain {
+        UNSET = 0;
+        E2EE_CHAT = 1;
+        STATUS = 2;
+        CAPI = 3;
+        BOT = 4;
     }
     message MessageHistoryBundle {
         optional string mimetype = 1;
@@ -2085,6 +2147,10 @@ message Message {
             GROUP_MEMBER_LABEL_CHANGE = 30;
         }
     }
+    message QuestionResponseMessage {
+        optional Protocol.MessageKey key = 1;
+        optional string text = 2;
+    }
     message ReactionMessage {
         optional Protocol.MessageKey key = 1;
         optional string text = 2;
@@ -2156,6 +2222,7 @@ message Message {
             UNKNOWN = 0;
             STATUS_ADD_YOURS = 1;
             STATUS_RESHARE = 2;
+            STATUS_QUESTION_ANSWER_RESHARE = 3;
         }
     }
     message StatusQuestionAnswerMessage {
@@ -2183,6 +2250,7 @@ message Message {
         optional bool isAiSticker = 20;
         optional bool isLottie = 21;
         optional string accessibilityLabel = 22;
+        optional Message.MediaKeyDomain mediaKeyDomain = 23;
     }
     message StickerPackMessage {
         optional string stickerPackId = 1;
@@ -2309,6 +2377,7 @@ message Message {
         optional uint64 motionPhotoPresentationOffsetMs = 29;
         optional string metadataUrl = 30;
         optional VideoSourceType videoSourceType = 31;
+        optional Message.MediaKeyDomain mediaKeyDomain = 32;
         enum Attribution {
             NONE = 0;
             GIPHY = 1;
@@ -2374,4 +2443,6 @@ enum BotMetricsEntryPoint {
     ASK_META_AI_CONTEXT_MENU = 26;
     ASK_META_AI_CONTEXT_MENU_1ON1 = 27;
     ASK_META_AI_CONTEXT_MENU_GROUP = 28;
+    INVOKE_META_AI_1ON1 = 29;
+    INVOKE_META_AI_GROUP = 30;
 }
