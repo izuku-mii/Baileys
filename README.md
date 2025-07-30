@@ -140,6 +140,7 @@ import makeWASocket from '@itsukichan/baileys'
         - [Send Album Message](#send-album-message) 
         - [Shop Message](#shop-message) 
         - [Collection Message](#collection-message) 
+    - [Delete AI Icon Feature](#delete-ai-icon-feature) 
     - [Sending with Link Preview](#sending-messages-with-link-previews)
     - [Media Messages](#media-messages)
         - [Gif Message](#gif-message)
@@ -1144,6 +1145,7 @@ await suki.sendMessage(
 
 ### Buttons Template Message
 ```ts
+// This no longer works
 await suki.sendMessage(
     jid,
     {
@@ -1883,6 +1885,30 @@ await suki.sendMessage(
        }, 
         hasMediaAttachment: false, // or true
         viewOnce: true
+    }
+)
+```
+
+### Delete AI Icon Feature 
+```ts
+await suki.sendMessage(
+    jid,
+    {
+        text: 'Hi'
+    }, {
+    ai: false // Add ai usage and change it to false
+    }
+)
+
+// If using relay
+await suki.relayMessage(
+    jid,
+    {
+        extendedTextMessage: {
+            text: 'Hi'
+        }
+    }, {
+    AI: false // Use capital letters
     }
 )
 ```

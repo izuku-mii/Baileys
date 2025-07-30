@@ -33,6 +33,7 @@ export declare const makeMessagesRecvSocket: (config: SocketConfig) => {
     }>
     profilePictureUrl: (jid: string) => Promise<string>
     getUSyncDevices: (jids: string[], useCache: boolean, ignoreZeroDevices: boolean) => Promise<import("../WABinary").JidWithDevice[]>
+    getEphemeralGroup: (jid: string) => Promise<number>
     updateMediaMessage: (message: proto.IWebMessageInfo) => Promise<proto.IWebMessageInfo>
     sendStatusMentions: (content: import("../Types").WAProto.IMessage, jid: string, Private?: boolean) => Promise<string>
     sendAlbumMessage: (jid: string, medias: import("../Types").WAProto.IMessage, options?: import("../Types").MiscMessageGenerationOptions) => Promise<string>
