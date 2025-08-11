@@ -756,9 +756,10 @@ await suki.sendMessage(
                 degreesLongitude: 55.1121221,
                 name: 'name'
             },
-           startTime: number, 
-           endTime: number, 
-           extraGuestsAllowed: true // or false
+            call: 'audio' // or 'video'
+            startTime: number, 
+            endTime: number, 
+            extraGuestsAllowed: true // or false
         }
     }
 )

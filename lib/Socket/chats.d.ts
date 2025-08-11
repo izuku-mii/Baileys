@@ -14,6 +14,7 @@ export declare const makeChatsSocket: (config: SocketConfig) => {
     }>
     upsertMessage: (msg: proto.IWebMessageInfo, type: MessageUpsertType) => Promise<void>
     appPatch: (patchCreate: WAPatchCreate) => Promise<void>
+    createCallLink: (type: 'audio' | 'video', event?: number, timeoutMs?: number) => Promise<void>
     sendPresenceUpdate: (type: WAPresence, toJid?: string) => Promise<void>
     presenceSubscribe: (toJid: string, tcToken?: Buffer) => Promise<void>
     getBotListV2: () => Promise<BotListInfo[]>

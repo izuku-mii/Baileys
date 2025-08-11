@@ -26,11 +26,11 @@ export type WATextMessage = proto.Message.IExtendedTextMessage
 
 export type WAContextInfo = proto.IContextInfo
 
-export type WAEventMessage = proto.Message.IEventMessage
-
 export type WALocationMessage = proto.Message.ILocationMessage
 
 export type WAOrderMessage = proto.Message.IOrderMessage
+
+export type WAEventMessage = proto.Message.IEventMessage
 
 export type WAGenericMediaMessage = proto.Message.IVideoMessage | proto.Message.IImageMessage | proto.Message.IAudioMessage | proto.Message.IDocumentMessage | proto.Message.IStickerMessage
 
@@ -435,6 +435,7 @@ export type MediaGenerationOptions = {
 export type MessageContentGenerationOptions = MediaGenerationOptions & {
     getUrlInfo?: (text: string) => Promise<WAUrlInfo | undefined>
     getProfilePicUrl?: (jid: string) => Promise<string | undefined>
+    getCallLink?: (type: 'audio' | 'video', event?: number) => Promise<string | undefined>
 }
 
 export type MessageGenerationOptions = MessageContentGenerationOptions & MessageGenerationOptionsFromContent
