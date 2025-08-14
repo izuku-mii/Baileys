@@ -48,7 +48,6 @@ export declare const makeBusinessSocket: (config: SocketConfig) => {
     getEphemeralGroup: (jid: string) => Promise<number>
     updateMediaMessage: (message: import("../Types").WAProto.IWebMessageInfo) => Promise<import("../Types").WAProto.IWebMessageInfo>
     sendStatusMentions: (content: import("../Types").WAProto.IMessage, jid: string, Private?: boolean) => Promise<string>
-    sendAlbumMessage: (jid: string, medias: import("../Types").WAProto.IMessage, options?: import("../Types").MiscMessageGenerationOptions) => Promise<string>
     sendMessage: (jid: string, content: import("../Types").AnyMessageContent, options?: import("../Types").MiscMessageGenerationOptions) => Promise<import("../Types").WAProto.WebMessageInfo | undefined>
     groupMetadata: (jid: string) => Promise<import("../Types").GroupMetadata>
     groupCreate: (subject: string, participants: string[]) => Promise<import("../Types").GroupMetadata>

@@ -137,7 +137,6 @@ import makeWASocket from '@itsukichan/baileys'
         - [Buttons Interactive Message PIX](#buttons-interactive-message-pix) 
         - [Buttons Interactive Message PAY](#buttons-interactive-message-PAY) 
         - [Status Mentions Message](#status-mentions-message) 
-        - [Send Album Message](#send-album-message) 
         - [Shop Message](#shop-message) 
         - [Collection Message](#collection-message) 
     - [Delete AI Icon Feature](#delete-ai-icon-feature) 
@@ -147,6 +146,7 @@ import makeWASocket from '@itsukichan/baileys'
         - [Video Message](#video-message)
         - [Audio Message](#audio-message)
         - [Image Message](#image-message)
+        - [Album Message](#album-message) 
         - [Ptv Video Message](#ptv-video-message) 
         - [ViewOnce Message](#view-once-message)
 - [Modify Messages](#modify-messages)
@@ -756,7 +756,7 @@ await suki.sendMessage(
                 degreesLongitude: 55.1121221,
                 name: 'name'
             },
-            call: 'audio' // or 'video'
+            call: 'audio', // or 'video'
             startTime: number, 
             endTime: number, 
             extraGuestsAllowed: true // or false
@@ -1591,34 +1591,6 @@ await suki.sendStatusMentions(
 )
 ```
 
-### Send Album Message
-```ts
-await suki.sendAlbumMessage(
-    jid,
-    [
-       {
-          image: { url: 'https://example.com/jdbenkksjs.jpg' }, 
-          caption: 'Hello World'
-       },
-       {
-          image: Buffer, 
-          caption: 'Hello World'
-       },
-       {
-           video: { url: 'https://example.com/jdbenkksjs.mp4' }, 
-           caption: 'Hello World'
-       }, 
-       {
-           video: Buffer, 
-           caption: 'Hello World'
-       }
-    ],
-    { 
-       quoted: message, 
-       delay: 2000 
-    }
-)
-```
 ### Shop Message
 ```ts
 await suki.sendMessage(
@@ -2013,6 +1985,32 @@ await suki.sendMessage(
             url: './Media/ma_img.png'
         },
         caption: 'hello word'
+    }
+)
+```
+
+### Album Message
+```ts
+await suki.sendMessage(
+    id, 
+    { 
+        album: [{
+        	image: {
+        		url: 'https://example.com/itsukichan.jpg'
+        	}, 
+        	caption: 'Hay'
+        }, {
+        	image: Buffer, 
+        	caption: 'Hay'
+        }, {
+        	video: {
+        		url: 'https://example.com/itsukichan.mp4'
+        	}, 
+        	caption: 'Hay'
+        }, {
+        	video: Buffer, 
+        	caption: 'Hay'
+        }
     }
 )
 ```
