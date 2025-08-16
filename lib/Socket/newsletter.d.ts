@@ -18,6 +18,9 @@ export declare const makeNewsletterSocket: (config: SocketConfig) => {
     newsletterQuery: (jid: string, type: string, content: BinaryNode) => Promise<BinaryNode>
     newsletterWMexQuery: (jid?: string | undefined, query_id: number, content: BinaryNode) => Promise<BinaryNode>
     newsletterMetadata: (type: 'invite' | 'jid', key: string, role?: NewsletterViewRole) => Promise<NewsletterMetadata>
+    newsletterFetchAllParticipating: () => Promise<{
+    	[_: string]: NewsletterMetadata
+    }>
     newsletterAdminCount: (jid: string) => Promise<number>
     newsletterChangeOwner: (jid: string, userLid: string) => Promise<void>
     newsletterDemote: (jid: string, userLid: string) => Promise<void>

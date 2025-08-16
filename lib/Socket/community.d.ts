@@ -4,8 +4,8 @@ import { BinaryNode } from '../WABinary'
 
 export declare const makeCommunitiesSocket: (config: SocketConfig) => {
     communityQuery: (jid: string, type: string, content: BinaryNode) => Promise<BinaryNode>
-    communityMetadata: (jid: string) => Promise<communityMetadata>
-    communityCreate: (subject: string, participants: string[]) => Promise<communityMetadata>
+    communityMetadata: (jid: string) => Promise<GroupMetadata>
+    communityCreate: (subject: string, participants: string[]) => Promise<GroupMetadata>
     communityLeave: (id: string) => Promise<void>
     communityUpdateSubject: (jid: string, subject: string) => Promise<void>
     communityRequestParticipantsList: (jid: string) => Promise<{
@@ -36,14 +36,14 @@ export declare const makeCommunitiesSocket: (config: SocketConfig) => {
      * @param key the key of the invite message, or optionally only provide the jid of the person who sent the invite
      * @param inviteMessage the message to accept
      */
-    communityAcceptInviteV4: (key: string | proto.IMessageKey, inviteMessage: proto.Message.IcommunityInviteMessage) => Promise<string>
-    communityGetInviteInfo: (code: string) => Promise<communityMetadata>
+    communityAcceptInviteV4: (key: string | proto.IMessageKey, inviteMessage: proto.Message.IGroupInviteMessage) => Promise<string>
+    communityGetInviteInfo: (code: string) => Promise<GroupMetadata>
     communityToggleEphemeral: (jid: string, ephemeralExpiration: number) => Promise<void>
     communitySettingUpdate: (jid: string, setting: 'announcement' | 'not_announcement' | 'locked' | 'unlocked') => Promise<void>
     communityMemberAddMode: (jid: string, mode: 'admin_add' | 'all_member_add') => Promise<void>
     communityJoinApprovalMode: (jid: string, mode: 'on' | 'off') => Promise<void>
     communityFetchAllParticipating: () => Promise<{
-        [_: string]: communityMetadata
+        [_: string]: GroupMetadata
     }>
     processingMutex: {
         mutex<T>(code: () => T | Promise<T>): Promise<T>

@@ -64,6 +64,9 @@ declare const makeWASocket: (config: UserFacingSocketConfig) => {
     newsletterQuery: (jid: string, type: string, content: BinaryNode) => Promise<BinaryNode>
     newsletterWMexQuery: (jid?: string | undefined, query_id: number, content: BinaryNode) => Promise<BinaryNode>
     newsletterMetadata: (type: "invite" | "jid", key: string, role?: import("../Types").NewsletterViewRole | undefined) => Promise<import("../Types").NewsletterMetadata>
+    newsletterFetchAllParticipating: () => Promise<{
+    	[_: string]: import("../Types").NewsletterMetadata
+    }>
     newsletterAdminCount: (jid: string) => Promise<number>
     newsletterChangeOwner: (jid: string, userLid: string) => Promise<void>
     newsletterDemote: (jid: string, userLid: string) => Promise<void>
