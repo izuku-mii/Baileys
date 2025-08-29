@@ -80,10 +80,14 @@
     "typescript": "^5.8.2"
   },
   "peerDependencies": {
-    "jimp": "^0.22.12"
+    "jimp": "^0.22.12",
+    "sharp": "^0.34.1"
   },
   "peerDependenciesMeta": {
     "jimp": {
+      "optional": true
+    },
+    "sharp": {
       "optional": true
     }
   },
