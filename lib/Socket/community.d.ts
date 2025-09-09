@@ -59,10 +59,6 @@ export declare const makeCommunitiesSocket: (config: SocketConfig) => {
     	lid: string
         id: string
     }[] | undefined>
-    onWhatsApp: (...jids: string[]) => Promise<{
-        jid: string
-        exists: unknown
-    }[] | undefined>
     fetchBlocklist: () => Promise<string[]>
     fetchStatus: (...jids: string[]) => Promise<import("..").USyncQueryResultList[] | undefined>
     fetchDisappearingDuration: (...jids: string[]) => Promise<import("..").USyncQueryResultList[] | undefined>

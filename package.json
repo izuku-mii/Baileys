@@ -54,6 +54,7 @@
     "fflate": "^0.8.2", 
     "lodash": "^4.17.21",
     "link-preview-js": "^3.0.14", 
+    "lru-cache": "^11.1.0", 
     "music-metadata": "^7.12.3",
     "pino": "^9.6",
     "protobufjs": "^7.2.4",
