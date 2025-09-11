@@ -15,6 +15,9 @@ declare const makeWASocket: (config: UserFacingSocketConfig) => {
         deleted: number
     }>
     productUpdate: (productId: string, update: import("../Types").ProductUpdate) => Promise<import("../Types").Product>
+    updateBussinesProfile: (args: import("../Types").UpdateBussinesProfileProps) => Promise<any>
+    updateCoverPhoto: (photo: import("../Types").WAMediaUpload) => Promise<number>
+    removeCoverPhoto: (id: string) => Promise<any>
     sendMessageAck: ({ tag, attrs, content }: import("..").BinaryNode, errorCode?: number | undefined) => Promise<void>
     sendRetryRequest: (node: import("..").BinaryNode, forceIncludeKeys?: boolean) => Promise<void>
     offerCall: (toJid: string, isVideo?: boolean) => Promise<{
@@ -149,6 +152,8 @@ declare const makeWASocket: (config: UserFacingSocketConfig) => {
         id: string
         fromMe?: boolean | undefined
     }[], star: boolean) => Promise<void>
+    addOrEditQuickReply: (quickReply: import("../Types/Bussines").QuickReplyAction) => Promise<void>
+    removeQuickReply: (timestamp: string) => Promise<void>
     addOrEditContact: (jid: string, contact: ContactAction) => Promise<void>
     removeContact: (jid: string) => Promise<void>
     executeUSyncQuery: (usyncQuery: import("..").USyncQuery) => Promise<import("..").USyncQueryResult | undefined>

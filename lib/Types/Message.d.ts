@@ -424,6 +424,9 @@ export type WAMediaUploadFunction = (encFilePath: string | Buffer, opts: WAMedia
     mediaUrl: string
     directPath: string
     handle?: string
+    meta_hmac?: string
+    ts?: number
+    fbid?: number
 }>
 
 export type MediaGenerationOptions = {

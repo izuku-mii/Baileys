@@ -56,6 +56,7 @@ export declare const MEDIA_HKDF_KEY_MAPPING: {
     'product-catalog-image': string
     'payment-bg-image': string
     'ptv': string
+    'biz-cover-photo': string
 }
 
 export declare const MEDIA_KEYS: (keyof typeof MEDIA_HKDF_KEY_MAPPING)[]

@@ -1,5 +1,6 @@
 import type { proto } from '../../WAProto'
 import type { AccountSettings } from './Auth'
+import type { QuickReplyAction } from './Bussines'
 import type { ContactAction } from './Contact'
 import type { BufferedEventData } from './Events'
 import type { LabelActionBody } from './Label'
@@ -124,6 +125,8 @@ export type ChatModification = {
     addMessageLabel: MessageLabelAssociationActionBody
 } | {
     removeMessageLabel: MessageLabelAssociationActionBody
+} | {
+    quickReply: QuickReplyAction
 }
 
 export type InitialReceivedChatsState = {
