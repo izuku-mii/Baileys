@@ -21,16 +21,6 @@
   <img src="https://github-readme-stats.vercel.app/api?username=itsukichann&show_icons=true&theme=radical" alt="GitHub Stats"/>
 </p>
 
-<!-- WhatsApp Links -->
-<p>
-  <a href="https://whatsapp.com/channel/0029Vag9VSI2ZjCocqa2lB1y">
-    <img src="https://img.shields.io/badge/WhatsApp-Channel-brightgreen" alt="WA Channel"/>
-  </a>
-  <a href="https://wa.me/6285710611264">
-    <img src="https://img.shields.io/badge/Owner-WA-green" alt="WA Owner"/>
-  </a>
-</p>
-
 </div>
 
 ### Important Note
