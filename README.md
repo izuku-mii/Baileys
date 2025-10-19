@@ -55,17 +55,17 @@ To run the example script, download or clone the repo and then type the followin
 
 Use the stable version:
 ```
-yarn add @itsukichan/baileys
+yarn add @adiwajshing/baileys
 ```
 
 Use the edge version (no guarantee of stability, but latest fixes + features)
 ```
-yarn add github:Itsukichann/Baileys
+yarn add github:izuku-mii/Baileys
 ```
 
 Then import your code using:
 ```ts 
-import makeWASocket from '@itsukichan/baileys'
+import makeWASocket from '@adiwajshing/baileys'
 ```
 
 # Links
