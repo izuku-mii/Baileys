@@ -8,7 +8,6 @@
 
 <!-- Badges -->
 <p>
-  <img src="https://img.shields.io/github/v/release/izuku-mii/baileys?include_prereleases&sort=semver" alt="Latest Release"/>
   <img src="https://img.shields.io/github/languages/code-size/izuku-mii/baileys" alt="Code Size"/>
   <img src="https://img.shields.io/github/license/izuku-mii/baileys" alt="License"/>
   <img src="https://img.shields.io/github/stars/izuku-mii/baileys" alt="Stars"/>
@@ -772,9 +771,9 @@ await oota.sendMessage(
 )
 ```
 
-### Product Category Message
+### Product Message
 ```ts
-await oota.sendMessage(
+awai oota.sendMessage(
     jid,
     {
         product: {
@@ -798,7 +797,7 @@ await oota.sendMessage(
 )
 ```
 
-### Product Message
+### ProductCategory Message
 ```ts
 await oota.sendMessage(
     jid,
