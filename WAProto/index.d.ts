@@ -1,5 +1,5 @@
 import { Adv } from './Adv'
-import { AICommon } from 'AICommon'
+import { AICommon } from './AICommon'
 import { BotMetadata } from './BotMetadata'
 import { Cert } from './Cert'
 import { WAChatLockSettings } from './ChatLockSettings'
@@ -7,6 +7,7 @@ import { CompanionReg } from './CompanionReg'
 import { DeviceCapabilities } from './DeviceCapabilities'
 import { E2E } from './WAE2E'
 import { Ephemeral } from './Ephemeral'
+import { GroupStatusMessage } from './GroupStatusMessage'
 import { HistorySync } from './HistorySync'
 import { LidMigrationSyncPayload } from './LidMigrationSyncPayload'
 import { MdStorageChatRowOpaqueData } from './MdStorageChatRowOpaqueData'
@@ -34,6 +35,7 @@ const proto = {
   ...DeviceCapabilities,
   ...E2E,
   ...Ephemeral,
+  ...GroupStatusMessage,
   ...HistorySync,
   ...LidMigrationSyncPayload, 
   ...MdStorageChatRowOpaqueData, 
