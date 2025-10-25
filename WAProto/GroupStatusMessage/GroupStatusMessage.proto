@@ -1,0 +1,62 @@
+syntax = "proto2";
+package GroupStatusMessage;
+
+import "../Protocol/Protocol.proto";
+
+message FutureProofMessage {
+    optional GroupStatusMessage groupStatusMessage = 1;
+}
+
+message GroupStatusMessage {
+    optional StatusType statusType = 1;
+    optional string statusText = 2;
+    optional uint64 timestamp = 3;
+    optional GroupActionMetadata actionMetadata = 4;
+    optional GroupMemberInfo memberInfo = 5;
+    optional GroupSettingsMetadata settingsMetadata = 6;
+}
+
+message GroupActionMetadata {
+    optional GroupActionType actionType = 1;
+    optional string actorJid = 2;
+    repeated string targetJids = 3;
+    optional string reason = 4;
+    
+    enum GroupActionType {
+        UNKNOWN = 0;
+        MEMBER_ADD = 1;
+        MEMBER_REMOVE = 2;
+        MEMBER_PROMOTE = 3;
+        MEMBER_DEMOTE = 4;
+        GROUP_CREATE = 5;
+        GROUP_SUBJECT_CHANGE = 6;
+        GROUP_ICON_CHANGE = 7;
+        GROUP_DESCRIPTION_CHANGE = 8;
+    }
+}
+
+message GroupMemberInfo {
+    optional string jid = 1;
+    optional string displayName = 2;
+    optional MemberRole role = 3;
+    
+    enum MemberRole {
+        MEMBER = 0;
+        ADMIN = 1;
+        SUPER_ADMIN = 2;
+    }
+}
+
+message GroupSettingsMetadata {
+    optional bool editGroupInfoRestricted = 1;
+    optional bool sendMessagesRestricted = 2;
+    optional bool disappearingMessagesEnabled = 3;
+    optional uint32 disappearingMessagesDuration = 4;
+}
+
+enum StatusType {
+    GENERAL = 0;
+    MEMBER_ACTION = 1;
+    SETTINGS_CHANGE = 2;
+    SYSTEM_MESSAGE = 3;
+}
