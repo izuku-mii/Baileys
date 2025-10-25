@@ -8,6 +8,7 @@ const proto = {
   ...require('./DeviceCapabilities/DeviceCapabilities').DeviceCapabilities, 
   ...require('./E2E/E2E').E2E, 
   ...require('./Ephemeral/Ephemeral').Ephemeral, 
+  ...require('./GroupStatusMessage/GroupStatusMessage').GroupStatusMessage,
   ...require('./HistorySync/HistorySync').HistorySync, 
   ...require('./LidMigrationSyncPayload/LidMigrationSyncPayload').LidMigrationSyncPayload, 
   ...require('./MdStorageChatRowOpaqueData/MdStorageChatRowOpaqueData').MdStorageChatRowOpaqueData, 
