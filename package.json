@@ -1,7 +1,9 @@
 {
-  "name": "baileys",
-  "type": "module",
-  "version": "7.0.0-rc14",
+  "name": "@izuku-mii/baileys",
+  "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  }
   "description": "A WebSockets library for interacting with WhatsApp Web",
   "keywords": [
     "whatsapp",
